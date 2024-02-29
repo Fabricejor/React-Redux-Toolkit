@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {useDispatch } from 'react-redux';
 import { addTask } from '../redux/slice/Taskslice';
 import { Button, Form } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Addtask() {
     const[description , setDescription]= useState('');
@@ -10,7 +11,7 @@ export default function Addtask() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (description.trim() === '') return;
-        dispatch(addTask({ id: Date.now(), description, isDone: false }));
+        dispatch(addTask({ id: Date.now(), description, isDone: false , createdAt: (new Date().toLocaleString()) }));
         setDescription('');
     };
   return (

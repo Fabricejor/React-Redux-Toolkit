@@ -3,17 +3,18 @@ import { Badge } from "react-bootstrap";
 import { FaCheck, FaTimes } from "react-icons/fa"
 import { useDispatch } from "react-redux";
 import { toggleStatus } from '../redux/slice/Taskslice';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Tasklist({id, name, isDone, createdAt, updatedAt, onClickRemove}) {
   const dispatch = useDispatch()
     const handleClick = ({id}) => {
         dispatch(toggleStatus({id}))
     }
-    console.log(id,name,isDone,createdAt,updatedAt);
+    console.log(id,name,isDone,createdAt,updatedAt,onClickRemove);
   return (
       <tr>
             <td>
-                <p className={`todo-item ${isDone && "done"}`}>{name}</p>
+                <p className={`task-item ${isDone && "done"}`}>{name}</p>
                 <Badge bg="secondary">{createdAt}</Badge>
             </td>
             <td>

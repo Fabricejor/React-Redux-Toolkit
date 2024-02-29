@@ -14,12 +14,10 @@ const Taskslice = createSlice({
             //le tableau recois le filter qui renvoie une copie du tableau avec la condition
         },
         toggleStatus:( state, action ) => {
-            const taskId = action.payload.id; 
-            const tasks = state.taskList.find(tasks => tasks.id === taskId); // !!renvoie true or false si la tache est trouve ou pas
-                if (tasks) {
-                tasks.isDone = !tasks.isDone;
-                }
+            const updatedAt = (new Date().toLocaleString())
+            state.tasklist = state.tasklist.map(task => task.id === action.payload.id ? { ...task, isDone: true, updatedAt } : task)
         },
+        // !le edittask n'a pas encore été implémenté
         editTask: (state, action) => {
             const { id, description } = action.payload;
             const tasks = state.taskList.find(tasks => tasks.id === id); 
